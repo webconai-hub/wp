@@ -27,30 +27,34 @@
                 <div class="col-lg-12">
                     <h1>Registro</h1>
                     <div class="form-container">
+                        
                         <form action="https://wp.webconai.com/api/v1/auth/register" method="POST">
                             <div class="form-group">
-                                <input type="email" class="form-control-input" name="email" required>
-                                <label class="label-control">Email</label>
+                                <input type="email" class="form-control-input" name="email" id="semail" required>
+                                <label class="label-control" for="semail">Email del Administrador</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control-input" name="nombre_admin" required>
-                                <label class="label-control">Nombre del Administrador</label>
+                                <input type="text" class="form-control-input" name="nombre_admin" id="sadmin" required>
+                                <label class="label-control" for="sadmin">Nombre Completo</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control-input" name="nombre_negocio" required>
-                                <label class="label-control">Nombre del WISP</label>
+                                <input type="text" class="form-control-input" name="nombre_negocio" id="sname" required>
+                                <label class="label-control" for="sname">Nombre del WISP (Empresa)</label>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control-input" name="password" required>
-                                <label class="label-control">Password</label>
+                                <input type="password" class="form-control-input" name="password" id="spassword" required>
+                                <label class="label-control" for="spassword">Contraseña para el Panel</label>
                             </div>
                             <div class="form-group">
-                                <select class="form-control-input" name="plan" id="planSelect" onchange="updateBtn()" style="padding-top: 0.5rem; height: 3.2rem;" required>
-                                    <option value="gratis">PLAN GRATIS (30 Clientes)</option>
-                                    <option value="emprendedor">PLAN EMPRENDEDOR ($10 USD - 100 Clientes)</option>
-                                    <option value="negocio">PLAN NEGOCIO ($20 USD - 200 Clientes)</option>
-                                    <option value="negocio">PLAN EMPRESA ($50 USD - 200 Clientes)</option>
+                                <select class="form-control-input" name="plan" id="planSelect" onchange="updateBtnText()" style="padding-top: 0.5rem; height: 3.2rem;" required>
+                                    <option value="gratis">PLAN GRATIS (Hasta 50 clientes)</option>
+                                    <option value="emprendedor">PLAN EMPRENDEDOR ($10 USD)</option>
+                                    <option value="negocio">PLAN NEGOCIO ($20 USD)</option>
+                                    <option value="negocio">PLAN EMPRESA ($50 USD)</option>
                                 </select>
+                            </div>
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="sterms" required> Acepto la <a href="privacy-policy.html">Privacidad</a>
                             </div>
                             <div class="form-group">
                                 <button type="submit" id="btnSubmit" class="form-control-submit-button">ACTIVAR PLAN GRATIS</button>
@@ -63,6 +67,13 @@
     </header>
     <script>
         function updateBtn() {
+            const plan = document.getElementById('planSelect').value;
+            const btn = document.getElementById('btnSubmit');
+            btn.innerText = (plan === 'gratis') ? 'ACTIVAR PLAN GRATIS' : 'CONTINUAR AL PAGO';
+        }
+    </script>
+<script>
+        function updateBtnText() {
             const plan = document.getElementById('planSelect').value;
             const btn = document.getElementById('btnSubmit');
             btn.innerText = (plan === 'gratis') ? 'ACTIVAR PLAN GRATIS' : 'CONTINUAR AL PAGO';
