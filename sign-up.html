@@ -3,84 +3,57 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="WisPocket. Tu Negocio Wisp en tu Bolsillo">
-    <meta name="author" content="WisPocket.com">
-
     <title>WisPocket - Registro</title>
-    
-    <!-- Styles -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/fontawesome-all.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <link rel="icon" href="images/favicon.png">
 </head>
 <body data-spy="scroll" data-target=".fixed-top">
-    
-    <!-- Navigation -->
+    <!-- Navegación Original (Solo Inicio e Ingresar) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
             <a class="navbar-brand logo-image" href="index.html"><img src="images/logosmall.png" alt="WisPocket"></a> 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link page-scroll" href="index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
                 </ul>
-                <span class="nav-item">
-                    <a class="btn-outline-sm" href="log-in.html">INGRESAR</a>
-                </span>
+                <span class="nav-item"><a class="btn-outline-sm" href="log-in.html">INGRESAR</a></span>
             </div>
         </div>
     </nav>
 
-    <!-- Header -->
     <header id="header" class="ex-2-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Crear Cuenta</h1>
-                    <p>Ya tienes cuenta? <a class="white" href="log-in.html">Ingresa Aquí</a></p> 
-                    
-                    <!-- Formulario de Registro -->
+                    <h1>Registro</h1>
                     <div class="form-container">
-                        <!-- IMPORTANTE: La acción apunta a tu servidor de Python -->
                         <form action="http://178.156.204.63:8000/api/v1/auth/register" method="POST">
-                            
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" name="nombre_negocio" required>
-                                <label class="label-control">Nombre de tu WISP (Empresa)</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control-input" name="nombre_admin" required>
-                                <label class="label-control">Tu Nombre Completo</label>
-                            </div>
-
                             <div class="form-group">
                                 <input type="email" class="form-control-input" name="email" required>
-                                <label class="label-control">Email (Donde recibirás tu ID)</label>
+                                <label class="label-control">Email</label>
                             </div>
-
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" name="nombre_admin" required>
+                                <label class="label-control">Nombre del Administrador</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control-input" name="nombre_negocio" required>
+                                <label class="label-control">Nombre del WISP</label>
+                            </div>
                             <div class="form-group">
                                 <input type="password" class="form-control-input" name="password" required>
-                                <label class="label-control">Password para Panel Web</label>
+                                <label class="label-control">Password</label>
                             </div>
-
                             <div class="form-group">
-                                <select class="form-control-input" name="plan" style="padding-top: 0.5rem;" required>
-                                    <option value="" disabled selected>Selecciona un Plan...</option>
-                                    <option value="gratis">Plan Gratis (Hasta 30 clientes)</option>
-                                    <option value="emprendedor">Plan Emprendedor (100 Clientes)</option>
-                                    <option value="negocio">Plan Negocio (200 Clientes)</option>
-                                    <option value="negocio">Plan Empresa (500 Clientes)</option>
+                                <select class="form-control-input" name="plan" id="planSelect" onchange="updateBtn()" style="padding-top: 0.5rem; height: 3.2rem;" required>
+                                    <option value="gratis">PLAN GRATIS (30 Clientes)</option>
+                                    <option value="emprendedor">PLAN EMPRENDEDOR ($10 USD - 100 Clientes)</option>
+                                    <option value="negocio">PLAN NEGOCIO ($20 USD - 200 Clientes)</option>
+                                    <option value="negocio">PLAN EMPRESA ($50 USD - 200 Clientes)</option>
                                 </select>
                             </div>
-
-                            <div class="form-group checkbox">
-                                <input type="checkbox" id="sterms" required> Acepto la <a href="privacy-policy.html">Privacidad</a> y <a href="terms-conditions.html">Términos</a>
-                            </div>
-
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">REGISTRARSE</button>
+                                <button type="submit" id="btnSubmit" class="form-control-submit-button">ACTIVAR PLAN GRATIS</button>
                             </div>
                         </form>
                     </div>
@@ -88,10 +61,12 @@
             </div>
         </div>
     </header>
-
-    <!-- Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script>
+        function updateBtn() {
+            const plan = document.getElementById('planSelect').value;
+            const btn = document.getElementById('btnSubmit');
+            btn.innerText = (plan === 'gratis') ? 'ACTIVAR PLAN GRATIS' : 'CONTINUAR AL PAGO';
+        }
+    </script>
 </body>
 </html>
