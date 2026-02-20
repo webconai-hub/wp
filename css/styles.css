@@ -104,6 +104,17 @@ h6 {
 	text-align: center;
 }
 
+.text-center {
+	text-align: center !important;
+}
+
+.header-content-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
 .p-heading {
 	margin-bottom: 3.25rem;
 }
@@ -1015,6 +1026,20 @@ screen and (-ms-high-contrast: none) {
 
 .tabs .image-container {
 	margin-bottom: 2.75rem;
+}
+
+.img-menu-large {
+	width: 100%;
+	max-width: 600px;
+	border: 6px solid #00d2ff;
+	border-radius: 1.5rem;
+	box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+	transition: all 0.3s ease;
+}
+
+.img-menu-large:hover {
+	transform: scale(1.02);
+	box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
 }
 
 .tabs .list-unstyled .fas {
