@@ -1327,7 +1327,16 @@ screen and (-ms-high-contrast: none) {
 	margin-bottom: 3rem;
 	margin-left: auto;
 	border: 1px solid #444;
-	border-radius: 0.375rem;
+	border-radius: 1rem;
+	background-color: #1a1a2e;
+	/* Fondo oscuro marino */
+	transition: all 0.3s ease;
+}
+
+.cards-2 .card:hover {
+	transform: translateY(-10px);
+	border-color: #00d2ff;
+	box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
 }
 
 .cards-2 .card .card-body {
@@ -1391,6 +1400,8 @@ screen and (-ms-high-contrast: none) {
 
 .cards-2 .card .list-unstyled .media-body {
 	margin-left: 0.625rem;
+	color: #e0e0e0;
+	/* Color de texto claro para contraste */
 }
 
 
